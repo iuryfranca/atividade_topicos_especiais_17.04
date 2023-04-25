@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express'
-import { registerRoutes } from '../components'
+import { registerRoutes } from '../components/index'
 
 /**
  * Init Express REST routes

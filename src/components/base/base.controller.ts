@@ -14,4 +14,13 @@ export class BaseController {
       version: '1.0.0',
     })
   }
+
+  // retorna informações sobre o autor
+  public sobre(req: Request, res: Response) {
+    res.status(200).json({
+      autor: 'Iury Gonçalves França',
+      email: 'iurygfranca@gmail.com',
+      github: 'https://github.com/iuryfranca/atividade_topicos_especiais_17.04',
+    })
+  }
 }

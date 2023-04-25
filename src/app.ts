@@ -37,7 +37,7 @@ export class App {
 
   public start(): void {
     this.app.listen(this.port, () => {
-      console.log(`🏃 Server is running in :${this.port}`)
+      console.log(`🏃 Server is running in: ${this.port}`)
     })
   }
 }
