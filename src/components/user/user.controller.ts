@@ -39,11 +39,6 @@ export const UserController = () => {
       userName: req.body.userName,
     }
 
-    console.log(
-      'LOG TESTE: SENHA CADASTRADA DO USUÁRIO [' + newUser.userName + '] =>',
-      decryptWithAES(newUser.password, userId)
-    )
-
     const checkValidate = isValidateObjectReq(req, isValidateObjectReqInputs)
     const checkValidateAlready = isValidateAlreadyObjectData(
       req,
@@ -64,6 +59,11 @@ export const UserController = () => {
     }
 
     if (statusRequest) {
+      console.log(
+        'LOG TESTE: SENHA CADASTRADA DO USUÁRIO [' + newUser.userName + '] =>',
+        decryptWithAES(newUser.password, userId)
+      )
+
       UsersList.push(newUser)
     }
 
@@ -74,7 +74,39 @@ export const UserController = () => {
   }
 
   const Update = (req: Request, res: Response) => {
-    res.status(200).json({ message: 'Api running....' })
+    let statusRequest = true
+    let mensagem = 'Usuário atualizado com sucesso!'
+
+    const userId = req.params.id
+    const oldUser = UsersList.find((user) => user.id === userId)
+    const newUser = {
+      id: userId,
+      name: req.body.name,
+      email: req.body.email,
+      password: encryptWithAES(req.body.password, userId),
+      userName: req.body.userName,
+    }
+
+    const checkValidate = isValidateObjectReq(req, isValidateObjectReqInputs)
+    if (Array.isArray(checkValidate)) {
+      statusRequest = false
+
+      mensagem = checkValidate.join(',')
+    }
+
+    if (!oldUser) {
+      statusRequest = false
+      mensagem = 'Usuário não encontrado!'
+    }
+
+    if (statusRequest && oldUser) {
+      UsersList.splice(UsersList.indexOf(oldUser), 1, { ...newUser } as IUsers)
+    }
+
+    res.send({
+      success: statusRequest,
+      message: mensagem,
+    })
   }
 
   const Delete = (req: Request, res: Response) => {

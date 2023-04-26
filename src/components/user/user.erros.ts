@@ -20,10 +20,10 @@ export const isValidateObjectReqInputs = [
 export const isValidateAlreadyObjectDataInputs = [
   {
     name: 'userName',
-    message: 'Já existe um [userName] cadastrado no sistema!',
+    message: 'Este [userName] já está cadastrado no sistema!',
   },
   {
     name: 'email',
-    message: 'Já existe um [email] cadastrado no sistema!',
+    message: 'Este [email] já está cadastrado no sistema!',
   },
 ]

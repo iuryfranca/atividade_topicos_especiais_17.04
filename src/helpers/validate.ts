@@ -27,7 +27,7 @@ export function isValidateAlreadyObjectData(
 
   let message: string[] = []
 
-  const isValidateAlready = data.some((user) => {
+  data.some((user) => {
     for (let i = 0; i < inputs.length; i++) {
       if (req.body[inputs[i].name] === user[inputs[i].name]) {
         message.push(inputs[i].message)
