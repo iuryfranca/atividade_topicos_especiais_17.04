@@ -40,7 +40,7 @@ The following technologies were used in the project:
 
 ```bash
 # Clone this project
-$ git clone https://github.com/iuryfranca/marketplace-challenge-eu-labs.git
+$ git clone https://github.com/iuryfranca/atividade_topicos_especiais_17.04.git
 
 # Install dependencies
 $ yarn install
@@ -48,5 +48,5 @@ $ yarn install
 # Run the project
 $ yarn dev
 
-# The server will initialize in the <http://localhost:3000>
+# The server will initialize in the <http://localhost:3333>
 ```
