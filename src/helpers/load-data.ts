@@ -5,8 +5,6 @@ const ARQUIVO = `${__dirname}/../storage/users.json`
 let users = Array()
 
 function loadUsers() {
-  console.log(ARQUIVO)
-
   if (!fs.existsSync(ARQUIVO)) fs.writeFileSync(ARQUIVO, JSON.stringify([]))
 
   const data = fs.readFileSync(ARQUIVO)

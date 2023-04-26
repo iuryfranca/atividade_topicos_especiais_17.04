@@ -11,10 +11,7 @@
 
     // Enable decorators
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "emitDecoratorMetadata": true
   },
   "include": ["./src/**/*", "./server.ts"],
   "exclude": ["./node_modules", "**/*.spec.ts"]

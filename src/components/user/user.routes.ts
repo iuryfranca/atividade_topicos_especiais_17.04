@@ -3,7 +3,7 @@
 import { Router } from 'express'
 import { UserController } from './user.controller'
 
-export class BaseRoutes {
+export class UserRoutes {
   private router: Router = Router()
 
   private readonly controller = UserController()
@@ -14,10 +14,10 @@ export class BaseRoutes {
   }
 
   private init(): void {
-    this.router.get('/users', this.controller.getUsers)
-    this.router.post('/users', this.controller.postUsers)
-    this.router.put('/usuarios/:id', this.controller.putUsers)
-    this.router.delete('/usuarios/:id', this.controller.deleteUser)
+    this.router.get('/users', this.controller.List)
+    this.router.post('/users', this.controller.Create)
+    this.router.put('/users/:id', this.controller.Update)
+    this.router.delete('/users/:id', this.controller.Delete)
   }
 
   public routes(): Router {
