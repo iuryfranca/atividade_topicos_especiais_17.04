@@ -19,11 +19,11 @@ Um projeto simples para criar uma api com dados local onde é possível fazer:
 - Update (editar usuários criados com id)
 - Delete (deletar usuários criados com id)
 
-O processo de criar e editar comtém regras para serem seguidas como:
+O processo de criar e editar contém regras para serem seguidas como:
 - Verifica se já existe um email ou username existente criado
 - Verifica se os campos estão todos preenchidos
 
-E para finalizar, ao cadastrar uma senha ela e salva criptografada com um log de teste descriptogranfando ela para mostrar que está funcionando
+E para finalizar, ao cadastrar uma senha ela é salva criptografada com um log de teste descriptogranfando ela para mostrar que está funcionando
     
 ## :rocket: Techs
 
