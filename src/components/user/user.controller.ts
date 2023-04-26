@@ -17,6 +17,7 @@ export interface IUsers {
   email: string
   password: string
   userName: string
+  active: true
 }
 
 export const UserController = () => {
@@ -37,6 +38,7 @@ export const UserController = () => {
       email: req.body.email,
       password: encryptWithAES(req.body.password, userId),
       userName: req.body.userName,
+      active: req.body.active,
     }
 
     const checkValidate = isValidateObjectReq(req, isValidateObjectReqInputs)
@@ -67,7 +69,7 @@ export const UserController = () => {
       UsersList.push(newUser)
     }
 
-    res.send({
+    res.status(200).send({
       success: statusRequest,
       message: mensagem,
     })
@@ -85,6 +87,7 @@ export const UserController = () => {
       email: req.body.email,
       password: encryptWithAES(req.body.password, userId),
       userName: req.body.userName,
+      active: req.body.active,
     }
 
     const checkValidate = isValidateObjectReq(req, isValidateObjectReqInputs)
@@ -103,14 +106,32 @@ export const UserController = () => {
       UsersList.splice(UsersList.indexOf(oldUser), 1, { ...newUser } as IUsers)
     }
 
-    res.send({
+    res.status(201).send({
       success: statusRequest,
       message: mensagem,
     })
   }
 
   const Delete = (req: Request, res: Response) => {
-    res.status(200).json({ message: 'Api running....' })
+    let statusRequest = true
+    let mensagem = 'Usuário excluído com sucesso!'
+
+    const userId = req.params.id
+    const deleteUser = UsersList.find((user) => user.id === userId)
+
+    if (!deleteUser) {
+      statusRequest = false
+      mensagem = 'Usuário não encontrado!'
+    }
+
+    if (statusRequest && deleteUser) {
+      UsersList.splice(UsersList.indexOf(deleteUser), 1)
+    }
+
+    res.status(200).send({
+      success: statusRequest,
+      message: mensagem,
+    })
   }
 
   return {
